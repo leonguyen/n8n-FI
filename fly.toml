@@ -1,29 +1,35 @@
-app = "n8n-fly-app"
-primary_region = "sin"
+# fly.toml app configuration file generated for n8n-fi on 2026-05-05T15:23:00Z
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = 'n8n-fi'
+primary_region = 'sin'
 
 [build]
-  dockerfile = "Dockerfile"
+  dockerfile = 'Dockerfile'
 
 [env]
-  N8N_HOST = "0.0.0.0"
-  N8N_PORT = "5678"
-  N8N_PROTOCOL = "https"
-  NODE_ENV = "production"
-  WEBHOOK_URL = "https://n8n-fly-app.fly.dev/"
-  GENERIC_TIMEZONE = "Asia/Ho_Chi_Minh"
+  GENERIC_TIMEZONE = 'Asia/Ho_Chi_Minh'
+  N8N_HOST = '0.0.0.0'
+  N8N_PORT = '5678'
+  N8N_PROTOCOL = 'https'
+  NODE_ENV = 'production'
+  WEBHOOK_URL = 'https://n8n-fly-app.fly.dev/'
 
 [[mounts]]
-  source = "n8n_data"
-  destination = "/home/node/.n8n"
+  source = 'n8n_data'
+  destination = '/home/node/.n8n'
 
 [http_service]
-  internal_port = 5678
+  internal_port = 8080
   force_https = true
-  auto_stop_machines = false
+  auto_stop_machines = 'off'
   auto_start_machines = true
   min_machines_running = 1
 
 [[vm]]
-  memory = "1024"
-  cpu_kind = "shared"
+  memory = '1024'
+  cpu_kind = 'shared'
   cpus = 1
+  memory_mb = 32768
